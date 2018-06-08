@@ -141,7 +141,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 				current=self._plugin_version,
 
 				# update method: pip
-				pip="https://github.com/dattas/OctoPrint-DetailedProgress/archive/{target_version}.zip"
+				pip="https://github.com/Galfinite/OctoPrint-DetailedProgress/archive/{target_version}.zip"
 			)
 		)
 
