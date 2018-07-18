@@ -138,7 +138,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 
 				# version check: github repository
 				type="github_release",
-				user="dattas",
+				user="galfinite",
 				repo="OctoPrint-DetailedProgress",
 				current=self._plugin_version,
 
