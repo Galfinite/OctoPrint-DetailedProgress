@@ -69,6 +69,8 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 				accuracy = "Medium"
 			elif accuracy == "linear":
 				accuracy = "Bad"
+			elif accuracy == "genius":
+				accuracy = "Genius"
 			else:
 				accuracy = "ERR"
 				self._logger.debug("Caught unmapped accuracy value: {0}".format(accuracy))
