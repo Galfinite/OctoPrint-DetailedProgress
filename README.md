@@ -12,7 +12,7 @@ A plugin that sends M117 commands to the printer to display the progress of the 
 Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
 or manually using this URL:
 
-    https://github.com/Galfninite/OctoPrint-DetailedProgress/archive/master.zip
+    https://github.com/Galfinite/OctoPrint-DetailedProgress/archive/master.zip
 
 ## Configuration
 
