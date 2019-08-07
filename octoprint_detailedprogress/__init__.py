@@ -63,7 +63,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		if accuracy:
 			if accuracy == "estimate":
 				accuracy = "Best"
-			elif accuracy == "average" or accuracy == "genius":
+			elif accuracy == "average":
 				accuracy = "Good"
 			elif accuracy == "analysis" or accuracy.startswith("mixed"):
 				accuracy = "Medium"
