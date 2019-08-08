@@ -49,6 +49,21 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		except Exception as e:
 			self._logger.info("Caught an exception {0}\nTraceback:{1}".format(e,traceback.format_exc()))
 
+	def calculate_ETA(self):
+        	currentData = self._printer.get_current_data()
+        	if not currentData["progress"]["printTimeLeft"]:
+        		return "-"
+        	current_time = datetime.datetime.today()
+        	finish_time = current_time + datetime.timedelta(0,currentData["progress"]["printTimeLeft"])
+        	strtime = format_time(finish_time)
+        	strdate = ""
+        	if finish_time.day > current_time.day:
+        		if finish_time.day == current_time.day + 1:
+        			strdate = " Tomorrow"
+        		else:
+        			strtime = " " + format_date(finish_time,"EEE d")
+        	return strtime + strdate
+
 	def _sanitize_current_data(self, currentData):
 		if (currentData["progress"]["printTimeLeft"] == None):
 			currentData["progress"]["printTimeLeft"] = currentData["job"]["estimatedPrintTime"]
@@ -81,7 +96,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		#Add additional data
 		try:
 			currentData["progress"]["printTimeLeftString"] = self._get_time_from_seconds(currentData["progress"]["printTimeLeft"])
-			currentData["progress"]["ETA"] = time.strftime(self._eta_strftime, time.localtime(time.time() + currentData["progress"]["printTimeLeft"]))
+			currentData["progress"]["ETA"] = self.calculate_ETA()
 		except Exception as e:
 			self._logger.debug("Caught an exception trying to parse data: {0}\n Error is: {1}\nTraceback:{2}".format(currentData,e,traceback.format_exc()))
 
