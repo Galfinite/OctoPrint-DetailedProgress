@@ -134,7 +134,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 	def get_settings_defaults(self):
 		return dict(
 			messages = [
-				"{completion:.2f}p  complete",
+				#"{completion:.2f}p  complete",
 				"ETL {printTimeLeft}",
 				"ETA {ETA}"
 			],
