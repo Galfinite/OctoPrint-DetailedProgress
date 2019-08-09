@@ -49,8 +49,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		except Exception as e:
 			self._logger.info("Caught an exception {0}\nTraceback:{1}".format(e,traceback.format_exc()))
 
-	def calculate_ETA(self):
-        	currentData = self._printer.get_current_data()
+	def calculate_ETA(self, currentData):
         	if not currentData["progress"]["printTimeLeft"]:
         		return "-"
         	current_time = datetime.datetime.today()
@@ -96,7 +95,7 @@ class DetailedProgressPlugin(octoprint.plugin.EventHandlerPlugin,
 		#Add additional data
 		try:
 			currentData["progress"]["printTimeLeftString"] = self._get_time_from_seconds(currentData["progress"]["printTimeLeft"])
-			currentData["progress"]["ETA"] = self.calculate_ETA()
+			currentData["progress"]["ETA"] = self.calculate_ETA(currentData)
 		except Exception as e:
 			self._logger.debug("Caught an exception trying to parse data: {0}\n Error is: {1}\nTraceback:{2}".format(currentData,e,traceback.format_exc()))
 
